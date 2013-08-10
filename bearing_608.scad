@@ -13,5 +13,3 @@ module bearing_608() {
 		}
 	}
 }
-
-bearing_608();
