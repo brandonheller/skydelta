@@ -1,4 +1,4 @@
-use <bearing_608.scad>;
+include <bearing_608.scad>;
 
 // Idler mount; rotates to follow the line as the effector moves.
 screw_r = 3.0/2;
@@ -21,15 +21,14 @@ outer_cube_w = idler_h+idler_clearance*2+outer_wall*2; // narrow side of idler m
 idler_boss_gap = 0.15;
 idler_boss_ir = 3;
 idler_boss_or = idler_boss_ir + idler_clearance;
+idler_color = [0, 0, 0, 1];
+idler_mount_height = taper_h*2+outer_cyl_h+bearing_608_h*2;
 
 big = 100;
 
 $fn=32;
 
 delta = 0.1;
-
-// FIXME: 'include <bearing_608.scad' seems broken, so 'use'ing for now; replace w/ref.
-bearing_608_h = 7.0;
 
 module idler_mount() {
 	difference() {
@@ -79,9 +78,11 @@ module idler() {
 	}
 }
 
-idler_color = [1, 0, 0, 0.5];
+module idler_mount_assembly() {
+	translate([0, 0, -bearing_608_h]) bearing_608();
+	translate([0, 0, taper_h+outer_cyl_h+taper_h]) bearing_608();
+	translate([idler_filament_r, 0, taper_h+outer_cyl_h/2]) rotate([90, 0, 0]) color(idler_color) idler();
+	idler_mount();
+}
 
-translate([0, 0, -bearing_608_h]) bearing_608();
-translate([0, 0, taper_h+outer_cyl_h+taper_h]) bearing_608();
-translate([idler_filament_r, 0, taper_h+outer_cyl_h/2]) rotate([90, 0, 0]) color(idler_color) idler();
-idler_mount();
+//idler_mount_assembly();

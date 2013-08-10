@@ -51,5 +51,5 @@ cube([flange_out, main_thickness, flange_height], center=true);
 	}
 }
 
-bearing_holder();
-bearing_608();
+//bearing_holder();
+//bearing_608();
