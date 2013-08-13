@@ -59,7 +59,7 @@ module idler_mount() {
 					rotate([i*-90, 0, 0]) cylinder(r1=idler_boss_ir, r2=idler_boss_or, h=idler_clearance-idler_boss_gap+delta);
 	}
 		// Extra material removal; simply not needed on back.
-		translate([-14, 0, 0]) cube([20, big, big], center=true);
+		translate([-13, 0, 0]) cube([20, big, big], center=true);
 	}
 }
 
