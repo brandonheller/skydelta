@@ -3,7 +3,6 @@ include <bearing_608.scad>;
 include <idler.scad>;
 
 screw_r = 3.0/2;
-bearing_ir = 8.0/2;
 inside_bearing_thickness = 2.0;
 inside_bearing_h = 4.0;
 taper_h = 6.0;
@@ -21,5 +20,3 @@ idler_boss_ir = 3;
 idler_boss_or = idler_boss_ir + idler_clearance;
 idler_color = [0, 0, 0, 1];
 idler_mount_height = taper_h*2+outer_cyl_h+bearing_608_h*2;
-
-$fn=32;
