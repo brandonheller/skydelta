@@ -31,9 +31,13 @@ module idler_mount() {
 			for(i = [-1, 1])
 				translate([idler_filament_r, i*(idler_h/2+idler_boss_gap), taper_h+outer_cyl_h/2])
 					rotate([i*-90, 0, 0]) cylinder(r1=idler_boss_ir, r2=idler_boss_or, h=idler_clearance-idler_boss_gap+delta);
-	}
+		}
 		// Extra material removal; simply not needed on back.
 		translate([-13, 0, 0]) cube([20, big, big], center=true);
+		// Missing chunk enables clipping into bearing
+		for(h = [-bearing_608_h-delta, taper_h+outer_cyl_h]) {
+			translate([-big/2, -clip_gap/2, h]) cube([big, clip_gap, bearing_608_h+delta]);
+		}
 	}
 }
 
