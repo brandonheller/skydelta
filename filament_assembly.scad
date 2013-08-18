@@ -1,6 +1,5 @@
-include <bearing_608.scad>;
 include <bearing_holder.scad>;
-include <idler_mount.scad>;
+include <idler_mount_single.scad>;
 
 module idler_assembly() {
 	translate([length/2, 0, bearing_base_thickness+flange_height]) {
