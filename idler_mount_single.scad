@@ -9,11 +9,11 @@ module idler_mount() {
 		intersection() {
 			union() {
 				// Main body
-				translate([0, 0, -inside_bearing_h]) cylinder(r=bearing_608_ir, h=inside_bearing_h);
-				translate([0, 0, 0]) cylinder(r1=bearing_608_ir, r2=outer_cyl_r, h=taper_h);
+				translate([0, 0, -inside_bearing_h]) bearing_grip();
+				translate([0, 0, 0]) cylinder(r1=bearing_608_ir+main_extra_r, r2=outer_cyl_r, h=taper_h);
 				translate([0, 0, taper_h]) cylinder(r=outer_cyl_r, h=outer_cyl_h);
-				translate([0, 0, taper_h+outer_cyl_h]) cylinder(r1=outer_cyl_r, r2=bearing_608_ir, h=taper_h);
-				translate([0, 0, taper_h+outer_cyl_h+taper_h]) cylinder(r=bearing_608_ir, h=inside_bearing_h);
+				translate([0, 0, taper_h+outer_cyl_h]) cylinder(r1=outer_cyl_r, r2=bearing_608_ir+main_extra_r, h=taper_h);
+				translate([0, 0, taper_h+outer_cyl_h+taper_h]) bearing_grip();
 			}
 			// Main body envelope
 			union() {
