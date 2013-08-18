@@ -12,8 +12,8 @@ outer_cyl_r = 22.0/2;
 filament_r = 1.0/2;
 idler_filament_r = idler_or-idler_cut+filament_r;
 idler_clearance = 0.75;
-outer_wall = 2.5; // thickness of vertical wall
-outer_cube_l = 16.0; // longer than outer_cube_w for idler screw
+outer_wall = 3.5; // thickness of vertical wall
+outer_cube_l = 18.0; // longer than outer_cube_w (affects width of wall with idler screw)
 outer_cube_w = idler_h+idler_clearance*2+outer_wall*2; // narrow side of idler mount
 idler_boss_gap = 0.15;
 idler_boss_ir = 3;
@@ -41,21 +41,24 @@ module bearing_grip() {
 	}
 }
 
-module bearing_body(inside_h) {
+module bearing_body(inside_h, hole_locs) {
 	// inside_h is the height of both the gap and the outer cylinder.
 	difference() {
 		union() {
 			translate([0, 0, 0]) cylinder(r1=bearing_608_ir+main_extra_r, r2=outer_cyl_r, h=taper_h);
-			translate([0, 0, taper_h]) cylinder(r=outer_cyl_r, h=outer_cyl_h);
-			translate([0, 0, taper_h+outer_cyl_h]) cylinder(r1=outer_cyl_r, r2=bearing_608_ir+main_extra_r, h=taper_h);
+			translate([0, 0, taper_h]) cylinder(r=outer_cyl_r, h=inside_h);
+			translate([0, 0, taper_h+inside_h]) cylinder(r1=outer_cyl_r, r2=bearing_608_ir+main_extra_r, h=taper_h);
 		}
 		// Slot for idler
 		difference() {
 			translate([0, 0, taper_h+inside_h/2]) cube([big, idler_h+idler_clearance*2, inside_h], center=true);
 			// Bosses for idler
-			for(i = [-1, 1])
-				translate([idler_filament_r, i*(idler_h/2+idler_boss_gap), taper_h+inside_h/2])
-					rotate([i*-90, 0, 0]) cylinder(r1=idler_boss_ir, r2=idler_boss_or, h=idler_clearance-idler_boss_gap+delta);
+			for(i = [-1, 1]) {
+				for (hl = hole_locs) {
+					translate([idler_filament_r, i*(idler_h/2+idler_boss_gap), taper_h+hl])
+						rotate([i*-90, 0, 0]) cylinder(r1=idler_boss_ir, r2=idler_boss_or, h=idler_clearance-idler_boss_gap+delta);
+				}
+			}
 		}
 	}
 }
@@ -66,13 +69,13 @@ module idler_mount(inside_h, hole_locs) {
 			union() {
 				// Main body
 				translate([0, 0, -inside_bearing_h]) bearing_grip();
-				translate([0, 0, 0]) bearing_body(inside_h);
-				translate([0, 0, taper_h+outer_cyl_h+taper_h]) bearing_grip();
+				translate([0, 0, 0]) bearing_body(inside_h, hole_locs);
+				translate([0, 0, taper_h+inside_h+taper_h]) bearing_grip();
 			}
 			// Main body envelope
 			union() {
 				cube([outer_cube_l, outer_cube_w, big], center=true);
-			}	
+			}
 		}
 		// Central vertical hole
 		cylinder(r=bearing_608_ir-inside_bearing_thickness, h=big, center=true);
@@ -85,3 +88,11 @@ module idler_mount(inside_h, hole_locs) {
 	}
 }
 
+module idler_mount_assembly(inside_h, hole_locs) {
+	translate([0, 0, -bearing_608_h]) bearing_608();
+	translate([0, 0, taper_h+inside_h+taper_h]) bearing_608();
+	for (hole_loc=hole_locs) {
+		translate([idler_filament_r, 0, taper_h+hole_loc]) rotate([90, 0, 0]) color(idler_color) idler();
+	}
+	idler_mount(inside_h, hole_locs);
+}
