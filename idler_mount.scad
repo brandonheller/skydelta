@@ -3,7 +3,7 @@ include <bearing_608.scad>;
 include <idler.scad>;
 
 screw_r = 3.0/2;
-inside_bearing_thickness = 1.8; // Thickness of the mount's inside-bearing tubes.
+inside_bearing_thickness = 1.5; // Thickness of the mount's inside-bearing tubes.
 inside_bearing_h = bearing_608_h;
 taper_h = 6.0;
 outer_cyl_h = 12.0;
@@ -21,9 +21,10 @@ idler_boss_or = idler_boss_ir + idler_clearance;
 idler_color = [0, 0, 0, 1];
 idler_mount_height = taper_h*2+outer_cyl_h+bearing_608_h*2;
 
-clip_gap = 1.5;
+clip_gap = 2.0;
 clip_flange_r = bearing_608_ir+bearing_608_countersink_r-0.1;
 clip_flange_h = bearing_608_countersink_h;
+clip_flange_extra_h = 1.0;  // Extra cylinder space to grab onto the clip, to simplify later removal.
 main_extra_r = bearing_608_countersink_r+1.0; // Additional body boss, against which flat side of bearing sits.
 
 $fn=32;
@@ -35,9 +36,10 @@ module bearing_grip() {
 			cylinder(r=bearing_608_ir, h=inside_bearing_h);
 			cylinder(r1=clip_flange_r, r2=bearing_608_ir, h=clip_flange_h);
 			translate([0, 0, bearing_608_h-clip_flange_h]) cylinder(r1=bearing_608_ir, r2=clip_flange_r, h=clip_flange_h);
+			translate([0, 0, bearing_608_h]) cylinder(r=clip_flange_r, h=clip_flange_extra_h);
 		}
 		// Missing chunk enables clipping into bearing
-		translate([-big/2, -clip_gap/2, -delta]) cube([big, clip_gap, bearing_608_h + 2 * delta]);
+		translate([-big/2, -clip_gap/2, -delta]) cube([big, clip_gap, bearing_608_h+2*delta+clip_flange_extra_h]);
 	}
 }
 
@@ -68,7 +70,7 @@ module idler_mount(inside_h, hole_locs) {
 		intersection() {
 			union() {
 				// Main body
-				translate([0, 0, -inside_bearing_h]) bearing_grip();
+				translate([0, 0, 0]) rotate([180, 0, 0]) bearing_grip();
 				translate([0, 0, 0]) bearing_body(inside_h, hole_locs);
 				translate([0, 0, taper_h+inside_h+taper_h]) bearing_grip();
 			}
