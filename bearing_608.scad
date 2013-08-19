@@ -14,8 +14,8 @@ module bearing_608() {
 		difference() {
 			cylinder(r=bearing_608_or, h=bearing_608_h);
 			translate([0, 0, -delta]) cylinder(r=bearing_608_ir, h=bearing_608_h + 2 * delta);
-			translate([0, 0, -delta]) cylinder(r1=bearing_608_ir+bearing_608_countersink_r, r2=bearing_608_ir, h=bearing_608_h+bearing_608_countersink_len);
-			translate([0, 0, bearing_608_h+delta]) rotate([180, 0, 0]) cylinder(r1=bearing_608_ir+bearing_608_countersink_r, r2=bearing_608_ir, h=bearing_608_h+bearing_608_countersink_len);
+			translate([0, 0, -delta]) cylinder(r1=bearing_608_ir+bearing_608_countersink_r, r2=bearing_608_ir, h=bearing_608_countersink_h);
+			translate([0, 0, bearing_608_h+delta]) rotate([180, 0, 0]) cylinder(r1=bearing_608_ir+bearing_608_countersink_r, r2=bearing_608_ir, h=bearing_608_countersink_h);
 		}
 	}
 }
