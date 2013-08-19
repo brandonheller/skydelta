@@ -1,6 +1,6 @@
 bearing_608_h = 7.0;
 bearing_608_ir = 8.0/2;
-bearing_608_or = 25.0/2;
+bearing_608_or = 22.0/2;
 bearing_608_color = [0.7, 0.7, 0.7, 1.0];
 
 delta = 0.1;
