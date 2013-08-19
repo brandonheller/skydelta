@@ -1,9 +1,12 @@
 include <config.scad>;
 
-idler_or = 11.0/2;
+// These dimensions are all measured from a set of double 623 v-wheels from Steve Graber, which are all one-offs.
+// You may want to consider purchasing 623VV's or 624VV's as a replacement. 
+idler_or = 15.3/2;
 idler_ir = 3.0/2;
-idler_h = 9.0;
-idler_cut = 2.0;
+idler_h = 11.2;
+idler_cut_or = 11.1/2;
+idler_cut = idler_or-idler_cut_or;
 
 $fn=32;
 
