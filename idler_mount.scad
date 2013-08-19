@@ -112,3 +112,4 @@ module idler_mount_assembly(inside_h, hole_locs) {
 
 inside_h=idler_or*2+idler_clearance;
 //idler_mount(inside_h, [inside_h/2]);
+//idler_mount_assembly(inside_h, [inside_h/2]);
