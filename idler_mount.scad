@@ -97,8 +97,8 @@ module idler_mount(inside_h, hole_locs) {
 }
 
 module idler_mount_assembly(inside_h, hole_locs) {
-	//translate([0, 0, -bearing_608_h]) bearing_608();
-	//translate([0, 0, taper_h+inside_h+taper_h]) bearing_608();
+	translate([0, 0, -bearing_608_h]) bearing_608();
+	translate([0, 0, taper_h+inside_h+taper_h]) bearing_608();
 	for (hole_loc=hole_locs) {
 		translate([idler_filament_r, 0, taper_h+hole_loc]) rotate([90, 0, 0]) color(idler_color) idler();
 	}
