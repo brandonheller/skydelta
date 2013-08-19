@@ -41,12 +41,14 @@ cube([flange_out, main_thickness, flange_height], center=true);
 		cylinder(r=bearing_608_ir, h=big, center=true);
 		// Bearing gap
 		translate([0, 0, -bearing_gap]) cylinder(r=bearing_608_or-3, h=big);
+		// Gap for end of clip on idler mount
+		translate([0, 0, -2.0]) cylinder(r=bearing_608_ir+2, h=big);
 		// Cutout for easier bearing removal
 		//translate([length/2-4, -4, -big/2]) cube([8, 8, big]);
 		// Cutout so that part snaps around bearing
 		translate([0, -gap_width/2, -big/2]) cube([big, gap_width, big]);
 		// Holes for attaching to extrusion
-		for (i = [-8, -18]) {
+		for (i = [-7, -20]) {
 			translate([0, 0, i]) rotate([0, -90, 0]) cylinder(r=screw_r, h=big, center=true);
 		}
 		// Chop off bottom corner
