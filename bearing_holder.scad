@@ -12,12 +12,13 @@ extrusion_width = 15;
 main_thickness = 3.0;
 flange_height = 20;
 flange_out = 20;
+gap_width = 8;  // width of gap for bearing snap
 
 big = 100;
 
 delta = 1;
 
-$fn = 64;
+$fn = 128;
 
 module bearing_holder() {
 	difference() {
@@ -41,7 +42,9 @@ cube([flange_out, main_thickness, flange_height], center=true);
 		// Bearing gap
 		translate([0, 0, -bearing_gap]) cylinder(r=bearing_608_or-3, h=big);
 		// Cutout for easier bearing removal
-		translate([length/2-4, -4, -big/2]) cube([8, 8, big]);
+		//translate([length/2-4, -4, -big/2]) cube([8, 8, big]);
+		// Cutout so that part snaps around bearing
+		translate([0, -gap_width/2, -big/2]) cube([big, gap_width, big]);
 		// Holes for attaching to extrusion
 		for (i = [-8, -18]) {
 			translate([0, 0, i]) rotate([0, -90, 0]) cylinder(r=screw_r, h=big, center=true);
@@ -51,5 +54,5 @@ cube([flange_out, main_thickness, flange_height], center=true);
 	}
 }
 
-//bearing_holder();
+bearing_holder();
 //bearing_608();
