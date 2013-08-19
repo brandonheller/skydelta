@@ -22,9 +22,9 @@ idler_color = [0, 0, 0, 1];
 idler_mount_height = taper_h*2+outer_cyl_h+bearing_608_h*2;
 
 clip_gap = 1.5;
-clip_flange_r = bearing_608_ir+0.5;
-clip_flange_h = 1.0;
-main_extra_r = 0.5+0.5; // Additional body boss, against which flat side of bearing sits.
+clip_flange_r = bearing_608_ir+bearing_608_countersink_r-0.1;
+clip_flange_h = bearing_608_countersink_h;
+main_extra_r = bearing_608_countersink_r+1.0; // Additional body boss, against which flat side of bearing sits.
 
 $fn=32;
 
