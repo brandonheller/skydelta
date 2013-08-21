@@ -1,4 +1,4 @@
-// Effector
+// Effector Cup
 // This part shares dimensions with effector.scad in Johann's Kossel repo:
 // git://github.com/jcrocholl/kossel.git
 
@@ -23,4 +23,4 @@ module effector_cup() {
 	}
 }
 
-effector_cup();
+//effector_cup();

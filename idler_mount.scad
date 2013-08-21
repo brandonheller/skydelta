@@ -110,6 +110,21 @@ module idler_mount_assembly(inside_h, hole_locs) {
 	idler_mount(inside_h, hole_locs);
 }
 
-inside_h=idler_or*2+idler_clearance;
-//idler_mount(inside_h, [inside_h/2]);
-//idler_mount_assembly(inside_h, [inside_h/2]);
+inside_h_single = idler_or*2+idler_clearance;
+//idler_mount(inside_h_single, [inside_h_single/2]);
+
+module idler_mount_assembly_single() {
+	idler_mount_assembly(inside_h_single, [inside_h_single/2]);
+}
+
+//idler_mount_assembly_single();
+
+idler_spacing = 50;  // Gap between the two idlers.
+inside_h_double = idler_or*2+idler_clearance+idler_spacing;
+idler_offset = idler_or+idler_clearance/2;
+
+module idler_mount_assembly_double() {
+	idler_mount_assembly(inside_h_double, [idler_offset, idler_offset+idler_spacing]);
+}
+
+//idler_mount_assembly_double();
