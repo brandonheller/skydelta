@@ -15,7 +15,7 @@ module effector_flange() {
 		intersection() {
 			union() {
 				// Main body
-				cylinder(r=effector_body_r, h=flange_height, $fn=128);
+				cylinder(r=effector_body_r, h=flange_height, $fn=64);
 				// Center solid tunnel
 				cylinder(r=tube_surround_r, h=main_height, $fn=64);
 				// "Ribs"
@@ -24,7 +24,7 @@ module effector_flange() {
 	  			}
 			}
 			// Outer cone shape to trim ribs
-			cylinder(r1=effector_body_r+2, r2=tube_surround_r, h=main_height, $fn=128);
+			cylinder(r1=effector_body_r+2, r2=tube_surround_r, h=main_height, $fn=64);
 			// Restrict to the main body cylinder
 			cylinder(r=effector_body_r, h=main_height, $fn=128);
 		}
