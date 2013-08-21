@@ -1,6 +1,7 @@
 // Defines dimensions shared between single and double idlers.
 include <bearing_608.scad>;
 include <idler.scad>;
+include <config.scad>;
 
 screw_r = (3.0-0.1)/2;
 inside_bearing_thickness = 1.5; // Thickness of the mount's inside-bearing tubes.
@@ -18,7 +19,7 @@ outer_cube_w = idler_h+idler_clearance*2+outer_wall*2; // narrow side of idler m
 idler_boss_gap = 0.15;
 idler_boss_ir = 3;
 idler_boss_or = idler_boss_ir + idler_clearance;
-idler_color = [0, 0, 0, 1];
+idler_color = black;
 idler_mount_height = taper_h*2+outer_cyl_h+bearing_608_h*2;
 
 clip_gap = 2.5;
@@ -107,7 +108,7 @@ module idler_mount_assembly(inside_h, hole_locs) {
 	for (hole_loc=hole_locs) {
 		translate([idler_filament_r, 0, taper_h+hole_loc]) rotate([90, 0, 0]) color(idler_color) idler();
 	}
-	idler_mount(inside_h, hole_locs);
+	color(color) idler_mount(inside_h, hole_locs);
 }
 
 inside_h_single = idler_or*2+idler_clearance;

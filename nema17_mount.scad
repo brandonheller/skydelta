@@ -1,5 +1,6 @@
 // This part mounts a NEMA17 motor to 15x15 extrusion (e.g. OpenBeam)
-// Additionally 
+include <bearing_608.scad>;
+
 // Dimensions from:
 // https://ultimachine.com/sites/default/files/Nema17StepperMotor.pdf
 nema17_hole_spacing = 31; // Grid of 4
@@ -10,7 +11,12 @@ nema17_flange_r = (22+0.2)/2;
 
 thickness = 3.5;
 extrusion_width = 15;
-spacing = 1; // Extra spacing between extrusion & holes; must ensure screw head (~3mm) passes 
+spool_r = 9; // Grabercars Kossel spools are 18mm measured at the center of the filament.
+filament_offset = bearing_608_or;
+// Extra spacing between extrusion & holes; must ensure screw head (~3mm) passes
+// Also should align the edge of the spool with the point at which it comes out of the bearing.
+//spacing = 1.00; 
+spacing = (filament_offset + spool_r) - nema17_width/2;
 covered_width = 15;  // Width of the stepper covered by this part
 
 tensioner_r = 8.5/2;
@@ -18,7 +24,7 @@ tensioner_x_offset = 14;
 tensioner_len = 10;
 
 m3_nut_r= (6.2+0.10)/2;
-m3_screw_head_r = 6.0/2;
+m3_screw_head_r = 6.5/2;
 
 $fn = 64;
 
@@ -62,4 +68,4 @@ module nema17_mount() {
 	}
 }
 
-nema17_mount();
+//nema17_mount();

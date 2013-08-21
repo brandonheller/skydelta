@@ -1,6 +1,11 @@
 delta = 0.1;
 big = 1000;
 
+// Plastic colors
+red = [1.0, 0, 0];  // bright red
+black = [0.25, 0.25, 0.25];  // dark, but not too dark to show reflections
+color = red;
+
 // Screws/nuts
 m3_r = 3.0/2;
 
