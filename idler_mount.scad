@@ -4,29 +4,34 @@ include <idler.scad>;
 include <config.scad>;
 
 screw_r = (3.0-0.1)/2;
-inside_bearing_thickness = 1.5; // Thickness of the mount's inside-bearing tubes.
+// Thickness of the mount's inside-bearing tubes.
+// In PLA, 1.5mm gives enough thickness to grab the bearing ID but still flex enough to insert.
+inside_bearing_thickness = 1.5;
 inside_bearing_h = bearing_608_h;
-taper_h = 6.0;
+taper_h = 5.0;  // Thickness from bearing clip to start of interior cutout.
 outer_cyl_h = 12.0;
 outer_cyl_r = 27.0/2;
 
-filament_r = 1.0/2;
+filament_r = 0.5/2;  // Measured OD of PowerPro spectra is ~0.5mm.
 idler_filament_r = idler_or-idler_cut+filament_r;
-idler_clearance = 1.0;
+idler_clearance = 0.5;  //  Set <= filament dia to reduce chance of escape.
 outer_wall = 3.5; // thickness of vertical wall
 outer_cube_l = 20.0; // longer than outer_cube_w (affects width of wall with idler screw)
 outer_cube_w = idler_h+idler_clearance*2+outer_wall*2; // narrow side of idler mount
-idler_boss_gap = 0.15;
+idler_boss_gap = 0.04;
 idler_boss_ir = 3;
 idler_boss_or = idler_boss_ir + idler_clearance;
 idler_color = black;
 idler_mount_height = taper_h*2+outer_cyl_h+bearing_608_h*2;
 
+// Params for the clips: the features at the ends that secure the top and bottom bearings.
+// The clips are not actually necessary, but more there to handle printing variation
+// and to prevent the bearings from popping off while handling them.
 clip_gap = 2.5;
 clip_flange_r = bearing_608_ir+bearing_608_countersink_r-0.2;  // A little less than what's needed for a perfect fit.
 clip_flange_h = bearing_608_countersink_h;
 clip_flange_extra_h = 1.0;  // Extra cylinder space to grab onto the clip, to simplify later removal.
-main_extra_r = bearing_608_countersink_r+1.0; // Additional body boss, against which flat side of bearing sits.
+main_extra_r = bearing_608_countersink_r+1.0; // Additional body boss, against which flat side of top & bottom bearings sit.
 
 $fn=128;
 
@@ -112,7 +117,7 @@ module idler_mount_assembly(inside_h, hole_locs) {
 }
 
 inside_h_single = idler_or*2+idler_clearance;
-//idler_mount(inside_h_single, [inside_h_single/2]);
+//rotate([0, -90, 0]) idler_mount(inside_h_single, [inside_h_single/2]);
 
 module idler_mount_assembly_single() {
 	idler_mount_assembly(inside_h_single, [inside_h_single/2]);
@@ -120,12 +125,14 @@ module idler_mount_assembly_single() {
 
 //idler_mount_assembly_single();
 
-idler_spacing = 50;  // Gap between the two idlers.
+idler_spacing = 60;  // Gap between the two idlers.
 inside_h_double = idler_or*2+idler_clearance+idler_spacing;
 idler_offset = idler_or+idler_clearance/2;
+//rotate([0, -90, 0]) idler_mount(inside_h, [idler_offset, idler_offset+idler_spacing]);
 
 module idler_mount_assembly_double() {
 	idler_mount_assembly(inside_h_double, [idler_offset, idler_offset+idler_spacing]);
 }
 
 //idler_mount_assembly_double();
+

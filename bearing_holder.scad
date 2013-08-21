@@ -56,5 +56,5 @@ cube([flange_out, main_thickness, flange_height], center=true);
 	}
 }
 
-//bearing_holder();
+rotate([0, -90, 0]) bearing_holder();
 //bearing_608();
