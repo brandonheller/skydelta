@@ -1,5 +1,5 @@
-delta = 0.1;
-big = 1000;
+delta = 0.1;  // Arbitrary small value to eliminate coincident-face visual artifcats.
+big = 1000;  // Arbitrary large value to easy modeling of large stuff (usually for difference'ing).
 
 // Plastic colors
 red = [1.0, 0, 0];  // bright red
