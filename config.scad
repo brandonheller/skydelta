@@ -7,7 +7,7 @@ black = [0.25, 0.25, 0.25];  // dark, but not too dark to show reflections
 color = red;
 
 // Screws/nuts
-m3_r = 3.0/2;
+m3_r = (3.0+0.15)/2; // A little slop to reduce need to drill out.  Use high $fn values.
 
 // Effector key dimensions
 effector_body_r = 18;  // Main cylinder radius.  Kossel Mini compatible.
