@@ -4,7 +4,7 @@
 
 include <config.scad>;
 
-hotend_radius = 8.1;  // Hole for the hotend (J-Head diameter is 16mm).
+hotend_radius = 8.06;  // Hole for the hotend (J-Head diameter is 16mm).
 push_fit_height = 4;  // Length of brass threaded into printed plastic.
 height = 8;
 
