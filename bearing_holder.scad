@@ -13,6 +13,7 @@ main_thickness = 3.0;
 flange_height = 20;
 flange_out = 20;
 gap_width = 8;  // width of gap for bearing snap
+bearing_608_or_adjust = -0.12;  // grab the bearing a bit tighter.
 
 big = 100;
 
@@ -34,7 +35,7 @@ cube([flange_out, main_thickness, flange_height], center=true);
 			} 
 		}
 		// Primary bearing cutout
-		cylinder(r=bearing_608_or, h=bearing_608_h + delta);
+		cylinder(r=bearing_608_or+bearing_608_or_adjust, h=bearing_608_h + delta);
 		// Cutout to avoid overly narrow paths
 		translate([0, 0, bearing_608_h/2+delta/2]) cube([big, cutout_width, bearing_608_h + delta], center=true);
 		// Center opening
