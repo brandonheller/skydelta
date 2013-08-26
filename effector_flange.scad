@@ -20,7 +20,7 @@ module effector_flange() {
 				cylinder(r=tube_surround_r, h=main_height, $fn=64);
 				// "Ribs"
 				for (a = [0:60:359]) rotate([0, 0, 30+a]) {
-	 				translate([0, mount_radius, 0]) cube([rib_width, big, big], center=true, $fn=24);
+	 				translate([-rib_width/2, 0, -delta]) cube([rib_width, effector_body_r, main_height+2*delta], $fn=24);
 	  			}
 			}
 			// Outer cone shape to trim ribs
@@ -29,10 +29,10 @@ module effector_flange() {
 			cylinder(r=effector_body_r, h=main_height, $fn=128);
 		}
 		// Center hole for grabbing tube
-		translate([0, 0, 0]) cylinder(r=effector_tube_or, h=big, center=true, $fn=64);
+		translate([0, 0, -delta]) cylinder(r=effector_tube_or, h=main_height+2*delta, $fn=64);
 		// Mounting holes
 		for (a = [0:60:359]) rotate([0, 0, a]) {
-	 		translate([0, mount_radius, 0]) cylinder(r=m3_r, h=big, center=true, $fn=24);
+	 		translate([0, mount_radius, -delta]) cylinder(r=m3_r, h=flange_height+2*delta, $fn=24);
 	  	}
 	}
 }

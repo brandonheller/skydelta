@@ -11,8 +11,6 @@ post_r = 140; // distance from center of print circle to center of post
 starting_height = 165;
 separation = 60;
 
-black = [0.3, 0.3, 0.3];
-
 module post_assembly() {
 	// Post
 	translate([extrusion_width/2, 0, extrusion_height/2]) color(black) cube([extrusion_width, extrusion_width, extrusion_height], center=true);
