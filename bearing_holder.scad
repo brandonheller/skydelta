@@ -1,4 +1,5 @@
 include <bearing_608.scad>;
+include <config.scad>;
 
 screw_r = 3.0/2;
 bearing_base_thickness = 3.5;
@@ -58,7 +59,7 @@ module bearing_holder() {
 		translate([0, -gap_width/2, -big/2]) cube([big, gap_width, big]);
 		// Holes for attaching to extrusion
 		for (i = [-7, -20]) {
-			translate([0, 0, i]) rotate([0, -90, 0]) cylinder(r=screw_r, h=big, center=true);
+			translate([0, 0, i]) rotate([0, -90, 0]) cylinder(r=m3_r, h=big, center=true);
 		}
 		// Chop off bottom corner
 		translate([-10, 0, -27]) rotate([0, 36, 0]) translate([0, -big/2, 0]) cube([big, big, big]);

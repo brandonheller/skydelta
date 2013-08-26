@@ -10,7 +10,6 @@ black = [0.25, 0.25, 0.25];  // dark, but not too dark to show reflections
 color = red;
 
 // Screws/nuts
-m3_r = 3.1/2;
 m3_r = (3.0+0.15)/2;  // A little slop to reduce need to drill out.  Use high $fn values.
 m3_nut_r= (6.2+0.10)/2;
 m3_screw_head_r = 6.5/2;
