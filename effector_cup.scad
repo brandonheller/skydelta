@@ -17,15 +17,15 @@ module effector_cup() {
 		// Screw cutout
 		translate([0, 0, -6]) import("m5_internal.stl");
 		// Clearance mounting holes (for screwing into tubes above)
-		for (a = [0:120:359]) rotate([0, 0, a]) {
-	 		translate([0, mount_radius, 0]) cylinder(r=m3_r, h=2*height, center=true, $fn=24);
-			translate([0, mount_radius, height/4]) cylinder(r=m3_cap_r, h=m3_cap_h+delta, $fn=24);
-	  	}
+		//for (a = [0:120:359]) rotate([0, 0, a]) {
+//	 		translate([0, mount_radius, 0]) cylinder(r=m3_r, h=2*height, center=true, $fn=24);
+//			translate([0, mount_radius, height/4]) cylinder(r=m3_cap_r, h=m3_cap_h+delta, $fn=24);
+	  	//}
 		// Thread-forming mounting holes (for adding screws to secure clip below)
-		for (a = [60:120:359]) rotate([0, 0, a]) {
+		for (a = [0:60:359]) rotate([0, 0, a]) {
 			translate([0, mount_radius, 0]) cylinder(r=m3_thread_r, h=2*height, center=true, $fn=24);
 	  	}
 	}
 }
 
-//effector_cup();
+effector_cup();
