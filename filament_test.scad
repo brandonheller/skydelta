@@ -1,24 +1,17 @@
 // Test piece to try out different sizes and shapes for printed "filament tubes"
+include <filament_tube.scad>;
 
 width = 27;
 len = 8;
 height = 6;
 
 path_r = 4;
-filament_r = 0.45;//0.5/2;
+filament_r = 0.45/2;
 
-spacing = 3; //width / 5;
-path_circle_fn = 64;
-circle_fn = 32;
+spacing = 3;
 
-square = 4;
-hexagon = 6;
-octagon = 8; 
-circle = circle_fn;
 paths = [square, hexagon, octagon, circle];
 cross_sections = [square, circle];
-
-square_factor = sqrt(2);  // factor to enlarge a diamond to fit a square
 
 // Order, circle_r, path, circle, rotation
 rings = [
@@ -31,12 +24,6 @@ rings = [
 [7, filament_r * square_factor, circle, square, 0],
 [8, filament_r, circle, circle, 0],
 ];
-
-module curved_path(path_r, circle_r, path_fn = 3, circle_fn = 3, rotation = 0) {
-	rotate([rotation, 0, 0]) rotate([0, 90, 0])
-		rotate_extrude(convexity = 10, $fn = path_fn)
-			translate([path_r, 0, 0]) circle(r = circle_r, $fn = circle_fn);
-}
 
 module rings(path_r) {
 	for (l = rings) {
