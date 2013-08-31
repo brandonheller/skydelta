@@ -15,8 +15,8 @@ module effector_assembly() {
 			translate([0, standoff_offset, height/2]) color(black) effector_standoff();
 		}
 		// Tensioners
-		translate([0, mount_radius, height/2+35]) color(black) rotate([0, 0, -90]) rotate([0, 180, 0]) effector_tensioner();
+		translate([0, mount_radius, height/2+35]) color(red) rotate([0, 0, -90]) rotate([0, 180, 0]) effector_tensioner();
 	}
 }
 
-effector_assembly();
+//effector_assembly();

@@ -75,5 +75,5 @@ module bearing_holder() {
 	}
 }
 
-rotate([0, -90, 0]) bearing_holder();
+//rotate([0, -90, 0]) bearing_holder();
 //bearing_608();
