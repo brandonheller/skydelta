@@ -6,7 +6,7 @@ include <effector_base.scad>;
 
 center_hole_r = mount_radius - m3_r - 3;
 
-module effector_lower() {
+module effector_upper() {
 	difference() {
 		effector_base();
 		// Cutout for bowden tube
@@ -18,4 +18,4 @@ module effector_lower() {
 	}
 }
 
-effector_lower();
+//effector_upper();

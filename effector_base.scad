@@ -47,7 +47,7 @@ module effector_base() {
 				// Through hole
 				translate([0, standoff_offset, 0]) cylinder(r=m3_r, h=height+2*delta, center=true, $fn=32);
 				// Screw head hole
-				translate([0, standoff_offset, height-m3_cap_h]) cylinder(r=m3_cap_r, h=height, center=true, $fn=32);
+				translate([0, standoff_offset, height/2-m3_cap_h]) cylinder(r=m3_cap_r, h=m3_cap_h+delta, $fn=32);
 			}
 		}
 	}
