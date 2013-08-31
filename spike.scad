@@ -8,7 +8,7 @@ include <spool.scad>;
 extrusion_width = 15;
 extrusion_height = 600;
 post_r = 240; // distance from center of print circle to center of post
-starting_height = 400;
+starting_height = 420;
 separation = 60;
 
 module post_assembly() {
@@ -28,7 +28,7 @@ module spike() {
 	for (i = [0: 120: 359]) {
 		rotate([0, 0, i]) translate([post_r, 0, 0]) post_assembly();
 	}
-	translate([0, 0, 80]) effector_assembly();
+	translate([0, 0, 120]) effector_assembly();
 }
 
 //post_assembly();
