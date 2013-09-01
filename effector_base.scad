@@ -16,6 +16,9 @@ standoff_increment_deg = 2;  // increment in degrees for between-standoff-mount 
 standoff_flange_offset = effector_body_r + 1;
 standoff_flange_r = 4;
 
+filament_exit_offset = effector_body_r;
+filament_exit_r = 2.0/2;
+filament_path_r = 0.6/2;
 
 module effector_base() {
 	difference() {
@@ -48,6 +51,15 @@ module effector_base() {
 				translate([0, standoff_offset, 0]) cylinder(r=m3_r, h=height+2*delta, center=true, $fn=32);
 				// Screw head hole
 				translate([0, standoff_offset, height/2-m3_cap_h]) cylinder(r=m3_cap_r, h=m3_cap_h+delta, $fn=32);
+			}
+		}
+		// Filament tie-down path, in two parts
+		for (a = [0:120:359]) rotate([0, 0, a]) {
+			translate([0, filament_exit_offset, 0]) {
+				// Side entrance
+				rotate([-90, 0, 0]) cylinder(r=filament_path_r, h=10, $fn=32);
+				// Vertical exit
+				cylinder(r=filament_exit_r, h=height+2*delta, $fn=32, center=true);
 			}
 		}
 	}
