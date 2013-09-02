@@ -11,7 +11,8 @@ color = red;
 
 // Screws/nuts
 m3_r = (3.0+0.15)/2;  // A little slop to reduce need to drill out.  Use high $fn values.
-m3_nut_r= (6.2+0.10)/2;
+m3_nut_r = (6.18+0.25)/2;
+m3_nut_h = 2.5;
 m3_screw_head_r = 6.5/2;
 m3_thread_r = (3.0-0.5)/2; // Tight fit for thread-forming.
 m3_cap_r = (5.0+0.3)/2;  // SHCS cap radius.

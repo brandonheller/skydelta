@@ -4,14 +4,14 @@
 include <config.scad>;
 include <effector_base.scad>;
 
-body_r = 4.25;
+body_r = 5;
 body_h = 5;
 
-filament_r = 0.5/2;
-filament_boss_r = 1.5;
-filament_boss_offset = effector_body_r - mount_radius; // XY distance from filament center to screw center
+filament_r = 0.6/2;
+filament_boss_r = 2.0;
+filament_boss_offset = filament_exit_offset - mount_radius; // XY distance from filament center to screw center
 
-m3_nut_h = 1.75;
+m3_nut_h = 2.5;
 
 $fn = 32;
 
@@ -19,7 +19,7 @@ module effector_tensioner() {
 	difference() {
 		hull() {
 			// Main screw body
-			cylinder(r=body_r, h=body_h);
+			cylinder(r=body_r, h=body_h, $fn=6);
 			// Filament holder
 			translate([filament_boss_offset, 0, 0]) cylinder(r=filament_boss_r, h=body_h);
 		}
