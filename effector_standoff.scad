@@ -4,16 +4,18 @@
 
 include <config.scad>;
 
-standoff_r = 6;
+standoff_r = (7.0)/2;
 standoff_h = 52;
+standoff_thread_h = 10;
 
 module effector_standoff() {
 	difference() {
 		// Body
 		cylinder(r=standoff_r, h=standoff_h, $fn=6);
-		// Screw hole
-		translate([0, 0, -delta]) cylinder(r=m3_r, h=standoff_h+2*delta, $fn=32);
+		// Screw holes
+		translate([0, 0, -delta]) cylinder(r=m3_thread_r, h=standoff_thread_h+delta, $fn=32);
+		translate([0, 0, standoff_h+delta]) rotate([180, 0, 0]) cylinder(r=m3_thread_r, h=standoff_thread_h+delta, $fn=32);
 	}
 }
 
-//effector_standoff();
+//rotate([90, 0, 0]) effector_standoff();

@@ -17,6 +17,7 @@ m3_screw_head_r = 6.5/2;
 m3_thread_r = (3.0-0.5)/2; // Tight fit for thread-forming.
 m3_cap_r = (5.0+0.3)/2;  // SHCS cap radius.
 m3_cap_h = 3.0;  // SHCS cap height.
+m3_thread_r = (2.8)/2;
 
 // Effector key dimensions
 effector_body_r = 18;  // Main cylinder radius.  Kossel Mini compatible.
