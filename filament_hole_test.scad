@@ -5,7 +5,7 @@ include <filament_tube.scad>;
 spacing = 5;
 group_spacing = 1.5;
 
-filament_start = 0.45/2;
+filament_start = 0.8/2;
 filament_step = 0.05/2;
 filament_increments = 8;
 
