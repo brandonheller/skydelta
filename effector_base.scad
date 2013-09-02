@@ -16,9 +16,10 @@ standoff_increment_deg = 2;  // increment in degrees for between-standoff-mount 
 standoff_flange_offset = effector_body_r + 1;
 standoff_flange_r = 4;
 
-filament_exit_offset = effector_body_r;
+filament_exit_offset = effector_body_r + 2.0;
 filament_exit_r = 2.0/2;
-filament_path_r = 0.6/2;
+filament_path_r = 1.2/2;
+filament_path_fn = 4; // square hole
 
 module effector_base() {
 	difference() {
@@ -57,7 +58,7 @@ module effector_base() {
 		for (a = [0:120:359]) rotate([0, 0, a]) {
 			translate([0, filament_exit_offset, 0]) {
 				// Side entrance
-				rotate([-90, 0, 0]) cylinder(r=filament_path_r, h=10, $fn=32);
+				rotate([-90, 0, 0]) cylinder(r=filament_path_r, h=10, $fn=filament_path_fn);
 				// Vertical exit
 				cylinder(r=filament_exit_r, h=height+2*delta, $fn=32, center=true);
 			}
