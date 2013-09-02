@@ -7,7 +7,7 @@ include <effector_base.scad>;
 body_r = 5;
 body_h = 5;
 
-filament_r = 0.6/2;
+filament_r = 1.0/2;
 filament_boss_r = 2.0;
 filament_boss_offset = filament_exit_offset - mount_radius; // XY distance from filament center to screw center
 
