@@ -4,7 +4,7 @@
 
 include <config.scad>;
 
-standoff_r = (7.0)/2;
+standoff_r = (8.0)/2;
 standoff_h = 52;
 standoff_thread_h = 10;
 
