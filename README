@@ -1,0 +1,9 @@
+CAUTION: EXPERIMENTAL!
+
+SkyDelta is a new type of 3D printer that employs tensioned lines for motion, rather than linear axes.  This repository includes all the OpenSCAD parts files needed to replicate the design and play with it yourself. 
+
+SkyDelta employs the triangular prism frame of an extrusion-based Linear Delta (e.g., Kossel, Cerberus Pup).  It ditches the linear rails, carriages, ball joints, control rods, belts and pulleys.  It adds Spectra line, rinted parts, bearings, standoffs, and three springs.
+
+On the plus side, it can potentially be cheaper, simpler, and faster to build, plus yield a larger build envelope.  On the down side, it may be harder to calibrate, requires new firmware, and may simply not print well.  
+
+Honestly, I don't know if it'll work, but it seems fun to try.  The parts are carefully designed and all have seen tweaks from printing and assembling them, but the whole assembly will likely need tuning.
