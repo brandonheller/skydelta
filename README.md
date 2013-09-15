@@ -1,6 +1,6 @@
 CAUTION: EXPERIMENTAL!
 
-SkyDelta is a new type of 3D printer that employs tensioned lines for motion, rather than linear axes.  This repository includes all the OpenSCAD parts files needed to replicate the design and play with it yourself. 
+SkyDelta is a new type of 3D printer that employs tensioned lines for motion, rather than linear axes.  This repository includes all the OpenSCAD parts files needed to replicate the design and play with it yourself, under a [Creative Commons Attribution-NonCommercial license (CC BY-NC)](http://creativecommons.org/licenses/by-nc/3.0/). 
 
 Designed by Brandon Heller in California (mostly, plus some design done over the Pacific).  The name refers to Skycam, which flies over football and athletic fields to provide great camera shots, using carefully-controlled high-tension lines.
 
