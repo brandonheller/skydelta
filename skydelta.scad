@@ -24,7 +24,7 @@ module post_assembly() {
 	}
 }
 
-module spike() {
+module skydelta() {
 	for (i = [0: 120: 359]) {
 		rotate([0, 0, i]) translate([post_r, 0, 0]) post_assembly();
 	}
@@ -32,4 +32,4 @@ module spike() {
 }
 
 //post_assembly();
-spike();
+skydelta();
